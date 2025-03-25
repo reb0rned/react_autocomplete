@@ -11,12 +11,10 @@ export const App: React.FC = () => {
   const [query, setQuery] = useState('');
   const [appliedQuery, setAppliedQuery] = useState('');
 
-  const debouncedSetQuery = useMemo(
+  const applyQuery = useMemo(
     () => debounce(setAppliedQuery, 300),
-    [setAppliedQuery],
+    [setAppliedQuery]
   );
-
-  const applyQuery = useCallback(debouncedSetQuery, [debouncedSetQuery]);
 
   const personClickHandler = (person: Person) => {
     setIsDroppedDown(false);
@@ -38,11 +36,9 @@ export const App: React.FC = () => {
     <div className="container">
       <main className="section is-flex is-flex-direction-column">
         <h1 className="title" data-cy="title">
-          {selectedPerson ? (
-            `${selectedPerson.name} (${selectedPerson.born} - ${selectedPerson.died})`
-          ) : (
-            `No selected person`
-          )}
+          {selectedPerson
+            ? `${selectedPerson.name} (${selectedPerson.born} - ${selectedPerson.died})`
+            : `No selected person`}
         </h1>
 
         <div className="dropdown is-active">
