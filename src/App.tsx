@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import './App.scss';
 import { peopleFromServer } from './data/people';
 import { Person } from './types/Person';
@@ -13,7 +13,7 @@ export const App: React.FC = () => {
 
   const applyQuery = useMemo(
     () => debounce(setAppliedQuery, 300),
-    [setAppliedQuery]
+    [setAppliedQuery],
   );
 
   const personClickHandler = (person: Person) => {
