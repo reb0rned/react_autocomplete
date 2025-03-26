@@ -13,7 +13,7 @@ export const App: React.FC = () => {
 
   const applyQuery = useMemo(
     () => debounce(setAppliedQuery, 300),
-    [setAppliedQuery],
+    [appliedQuery],
   );
 
   const personClickHandler = (person: Person) => {
